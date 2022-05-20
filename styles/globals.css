@@ -57,3 +57,29 @@ code {
 .button {
   margin-top: 20px;
 }
+
+.category-container {
+      margin: 5px;
+}
+
+.category-title {
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.packing-list-container {
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: scroll;
+    max-height: 500px;
+}
+
+.category-container div {
+  padding: 5px;
+}
+
+.hidden {
+  display: none;
+}
