@@ -31,7 +31,7 @@ export default function Home() {
                     <div>{numberOfNights + 1} pairs of socks 🧦</div>
                     <div>{numberOfNights + 1} shirts 👕</div>
                     <div>1 pair of pants 👖</div>
-                    {isSwimming && <div>swimsuit 👙</div>}
+                    {isSwimming === "on" && <div>swimsuit 👙</div>}
                     {climate === "Cold" && <div>Warm jacket 🥼</div>}
                     {climate === "Cold" && <div>Scarf 🧣</div>}
                     {climate === "Hot" && <div>Pair of shorts 🩳</div>}
