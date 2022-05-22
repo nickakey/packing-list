@@ -3,7 +3,10 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import { useState } from "react";
 import { Button, Switch, RadioGroup, Radio } from "@blueprintjs/core";
-import { generatePackingList, stringifyPackingList } from "../utils/generatePackingList";
+import {
+    generatePackingList,
+    stringifyPackingList,
+} from "../utils/generatePackingList";
 
 export const HOT = "Hot";
 export const COLD = "Cold";
@@ -17,13 +20,27 @@ export default function Home() {
     const generateButtonIsDisabled =
         numberOfNights === 0 || climate === undefined || isNaN(numberOfNights);
 
-    if (showPackingList === true) {
 
+
+
+    if (showPackingList === true) {
         const packingList = generatePackingList({
             numberOfNights,
             isSwimming,
             climate,
         });
+
+        const copyTextToClipboard = (text) => {
+            const mySmartTextarea = document.createElement("textarea");
+            mySmartTextarea.className = "hidden-text-area";
+            mySmartTextarea.innerHTML = stringifyPackingList(text);
+            document.body.appendChild(mySmartTextarea);
+            mySmartTextarea.select();
+            document.execCommand("copy");
+            mySmartTextarea.remove();
+        };
+
+
 
         return (
             <div className="container">
@@ -56,14 +73,7 @@ export default function Home() {
                             intent="primary"
                             className={"button"}
                             onClick={() => {
-                                const mySmartTextarea =
-                                    document.createElement("textarea");
-                                mySmartTextarea.className = "hidden-text-area";
-                                mySmartTextarea.innerHTML =
-                                    stringifyPackingList(packingList);
-                                document.body.appendChild(mySmartTextarea);
-                                mySmartTextarea.select();
-                                document.execCommand("copy");
+                                copyTextToClipboard(packingList);
                             }}
                         >
                             Copy list to clipboard
@@ -136,3 +146,4 @@ export default function Home() {
         </div>
     );
 }
+
